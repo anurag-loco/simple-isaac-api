@@ -1,11 +1,27 @@
+`use client`
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import { useEffect, useState } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const [subscribers, setSubscribers] = useState(0);
+
+  useEffect(() => {
+    async function getSubscribers() {
+      let t = await fetch('https://simple-isaac-api.vercel.app/api/subscribers')
+        .then(res => res.json())
+        .catch(e => console.log("error", e))
+      console.log(t)
+      // setSubscribers(t.length)
+    }
+    getSubscribers()
+
+  }, [0])
+  console.log(subscribers)
   return (
     <>
       <Head>

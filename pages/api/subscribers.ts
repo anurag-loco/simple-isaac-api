@@ -9,6 +9,7 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
+  
   function generateRandom(maxLimit = 100000) {
     let rand = Math.random() * maxLimit;
     console.log(rand); // say 99.81321410836433
